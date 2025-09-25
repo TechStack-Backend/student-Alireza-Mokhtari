@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+  <title>Create Developer</title>
+</head>
+<body>
+  <h1>Create Developer</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+
+  <a href="{% url 'developers_list' %}">Back to Developers</a>
+</body>
+</html>

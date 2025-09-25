@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head><title>Projects</title></head>
+<body>
+  <h1>Projects</h1>
+  <a href="{% url 'project_create' %}">Create new project</a>
+  <ul>
+    {% for p in projects %}
+      <li>
+        <strong>{{ p.title }}</strong>
+        <p>{{ p.description }}</p>
+        Developers:
+        {% if p.developers.all %}
+          <ul>
+            {% for d in p.developers.all %}
+              <li>{{ d.first_name }} {{ d.last_name }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <em>No developers assigned</em>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

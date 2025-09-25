@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head><title>Developers</title></head>
+<body>
+  <h1>Developers</h1>
+  <a href="{% url 'developer_create' %}">Create new developer</a>
+  <ul>
+    {% for dev in developers %}
+      <li>
+        <strong>{{ dev.first_name }} {{ dev.last_name }}</strong>
+        ({{ dev.email }} | {{ dev.age }})
+        <br>
+        Projects:
+        {% if dev.projects.all %}
+          <ul>
+            {% for p in dev.projects.all %}
+              <li>{{ p.title }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <em>No projects</em>
+        {% endif %}
+        <br>
+        Skills:
+        {% if dev.skills.all %}
+          <ul>
+            {% for s in dev.skills.all %}
+              <li>{{ s.title }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <em>No skills</em>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
