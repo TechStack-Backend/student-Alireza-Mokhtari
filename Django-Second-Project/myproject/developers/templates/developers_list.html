@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Developers List</h2>
+<ul>
+    {% for dev in developers %}
+        <li>
+            {{ dev.first_name }} {{ dev.last_name }} ({{ dev.username }})
+            - <a href="/developers/{{ dev.username }}/">View CV</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
